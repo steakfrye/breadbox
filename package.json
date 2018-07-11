@@ -4,7 +4,8 @@
   "description": "Store bread recipes and keep track of routines.",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon --exec babel-node src/Index.js"
+    "start": "webpack-dev-server --config ./webpack.config.js --mode development",
+    "node-start": "nodemon --exec babel-node src/index.js"
   },
   "repository": {
     "type": "git",
@@ -22,15 +23,25 @@
   },
   "homepage": "https://github.com/steakfrye/breadbox#readme",
   "dependencies": {
+    "dotenv": "^6.0.0",
     "express": "^4.16.3",
     "mongodb": "^3.1.1",
     "node": "^10.6.0",
-    "react": "^16.4.1"
+    "react": "^16.4.1",
+    "react-dom": "^16.4.1",
+    "react-router-dom": "^4.3.1"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.3",
+    "babel-loader": "^7.1.5",
     "babel-preset-env": "^1.7.0",
+    "babel-preset-react": "^6.24.1",
     "babel-preset-stage-2": "^6.24.1",
-    "nodemon": "^1.18.1"
+    "nodemon": "^1.18.1",
+    "react-hot-loader": "^4.3.3",
+    "webpack": "^4.16.0",
+    "webpack-cli": "^3.0.8",
+    "webpack-dev-server": "^3.1.4"
   }
 }
