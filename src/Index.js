@@ -6,6 +6,6 @@ import { BrowserRouter } from 'react-router-dom';
 
 dotenv.config(); //keep keys and values safe in '.env'
 
-ReactDOM.render(<div><p>Hello</p></div>, document.getElementById('app'));
+ReactDOM.render(<BrowserRouter><App /></BrowserRouter>, document.getElementById('app'));
 
 module.hot.accept();
