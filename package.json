@@ -4,7 +4,7 @@
   "description": "Store bread recipes and keep track of routines.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "nodemon --exec babel-node src/Index.js"
   },
   "repository": {
     "type": "git",
@@ -26,5 +26,11 @@
     "mongodb": "^3.1.1",
     "node": "^10.6.0",
     "react": "^16.4.1"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-stage-2": "^6.24.1",
+    "nodemon": "^1.18.1"
   }
 }
