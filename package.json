@@ -7,17 +7,17 @@
     "start": "node server.js",
     "server": "nodemon server.js"
   },
-    "repository": {
+  "repository": {
     "type": "git",
     "url": "git+https://github.com/steakfrye/breadbox.git"
   },
-    "author": {
+  "author": {
     "name": "Dylan Frye",
     "email": "dfryed@gmail.com",
     "url": "www.dylanfrye.me"
   },
   "license": "MIT",
-   "bugs": {
+  "bugs": {
     "url": "https://github.com/steakfrye/breadbox/issues"
   },
   "homepage": "https://github.com/steakfrye/breadbox#readme",
@@ -33,6 +33,6 @@
     "validator": "^10.4.0"
   },
   "devDependencies": {
-    "nodemon": "^1.18.2"
+    "nodemon": "^1.18.4"
   }
 }
