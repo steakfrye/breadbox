@@ -13,7 +13,7 @@ app.use(bodyParser.json());
 //define routes
 const users = require('./routes/api/users');
 const profile = require('./routes/api/profile');
-const posts = require('./routes/api/posts');
+const recipes = require('./routes/api/recipes');
 
 //DB config
 const db = require('./config/keys').mongoURI;
@@ -32,7 +32,7 @@ require('./config/passport')(passport);
 //use routes
 app.use('/api/users', users);
 app.use('/api/profile', profile);
-app.use('/api/posts', posts);
+app.use('/api/recipes', recipes);
 
 const port = process.env.PORT || 5000;
 
