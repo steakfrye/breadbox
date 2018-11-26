@@ -1,5 +1,5 @@
 module.exports = {
   mongoURI:
-  'mongodb://dylan:dylan123@ds137601.mlab.com:37601/udemy-mern',
+  'mongodb://dylan:dylan123@ds145951.mlab.com:45951/breadbox',
   secretOrKey: 'superSecret',
 };

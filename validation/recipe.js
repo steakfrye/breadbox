@@ -1,17 +1,23 @@
 const Validator = require('validator');
 const isEmpty = require('./is-empty');
 
-module.exports = function validatePostInput(data) {
+module.exports = function validateRecipeInput(data) {
   let errors = {};
 
-  data.text = !isEmpty(data.text) ? data.text : '';
+  data.title = !isEmpty(data.title) ? data.title : '';
+  data.flour = !isEmpty(data.flour) ? data.flour : '';
+  data.water = !isEmpty(data.water) ? data.water : '';
 
-  if(!Validator.isLength(data.text, { min: 10, max: 300 })) {
-    errors.text = 'Post must be between 10 and 300 characters;'
+  if (Validator.isEmpty(data.title)) {
+    errors.title = 'Title field is required.';
   }
 
-  if (Validator.isEmpty(data.text)) {
-    errors.text = 'Text field is required.';
+  if (Validator.isEmpty(data.flour)) {
+    errors.flour = 'Flour amount is required.';
+  }
+
+  if (Validator.isEmpty(data.water)) {
+    errors.water = 'Water amount is required.';
   }
 
   return {

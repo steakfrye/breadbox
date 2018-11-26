@@ -6,6 +6,7 @@ const passport = require('passport');
 const Profile = require('../../models/Profile'); // Profile model
 const Recipe = require('../../models/Recipe'); // Model
 const validateRecipeInput = require('../../validation/recipe'); // Validation
+const validateCommentInput = require('../../validation/comment');
 
 // @route    GET /api/recipes
 // @dscrp    Display all recipes
@@ -26,7 +27,6 @@ router.get('/:id', (req, res) => {
     .catch(err => res.status(404).json({ norecipefound: 'No recipe found.' }));
 });
 
-
 // @route    POST /api/recipes
 // @dscrp    Create recipe
 // @access   Private
@@ -38,9 +38,14 @@ router.post('/', passport.authenticate('jwt', { session: false }), (req, res) =>
   }
 
   const newRecipe =  new Recipe({
-    text: req.body.text,
-    name: req.body.name,
-    avatar: req.body.avatar,
+    title: req.body.title,
+    temperature: req.body.temperature,
+    fdt: req.body.fdt,
+    flour: req.body.flour,
+    water: req.body.water,
+    salt: req.body.salt,
+    yeast: req.body.yeast,
+    addition: req.body.addition,
     user: req.user.id,
   });
 
@@ -77,7 +82,6 @@ router.delete('/unlike/:id', passport.authenticate('jwt', { session: false }), (
     .then(profile => {
       Recipe.findById(req.params.id)
         .then(recipe => {
-          // Make sure user only likes once
           if(recipe.likes.filter(like => like.user.toString() === req.user.id).length === 0) {
             return res.status(400).json({ notliked: 'You have not liked this recipe.' });
           } else {
@@ -101,7 +105,7 @@ router.delete('/unlike/:id', passport.authenticate('jwt', { session: false }), (
 // @dscrp    Add comment to recipe
 // @access   Private
 router.post('/comment/:id', passport.authenticate('jwt', { session: false }), (req, res) => {
-  const { errors, isValid } = validateRecipeInput(req.body);
+  const { errors, isValid } = validateCommentInput(req.body);
 
   if(!isValid) return res.status(400).json(errors);
 
@@ -133,7 +137,7 @@ router.delete('/comment/:id/:comment_id', passport.authenticate('jwt', { session
       .then(recipe => {
         // Make sure user only comments once
         if(recipe.comments.filter(comment => comment._id.toString() === req.params.comment_id).length === 0) {
-          return res.status(400).json({ notcommented: 'You have not commented this recipe.' });
+          return res.status(400).json({ notcommented: 'You have not commented on this recipe.' });
         } else {
 
           // Get remove index

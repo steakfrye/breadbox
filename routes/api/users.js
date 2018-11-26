@@ -13,7 +13,7 @@ const validateLoginInput = require('../../validation/login');
 //load User model
 const User = require('../../models/User');
 
-//@route    GET /api/users/register
+//@route    POST /api/users/register
 //@dscrp    registers new users
 //@access   public
 router.post('/register', (req, res) => {
@@ -60,7 +60,7 @@ router.post('/register', (req, res) => {
   });
 });
 
-//@route    GET /api/users/login
+//@route    POST /api/users/login
 //@dscrp    login user / return JWT token
 //@access   public
 router.post('/login', (req, res) => {

@@ -3,6 +3,14 @@ const Schema = mongoose.Schema;
 
 //create Schema
 const RecipeSchema = new Schema({
+  user: {
+  type: Schema.Types.ObjectId,
+  ref: 'users',
+},
+  title: {
+    type: String,
+    required: true,
+  },
   temperature: {
     type: Number,
   },
@@ -21,11 +29,19 @@ const RecipeSchema = new Schema({
     type: Number,
     required: true,
   },
-  salt: {
+  salt: { //percentage
     type: Number,
     default: 2,
   },
-  addition: {
+  yeast: {
+    sourdough: {
+      type: Boolean,
+    },
+    amount: {
+      type: Number,
+    },
+  },
+  addition: { //extra ingredients
     type: String,
     amount: {
       type: Number,
