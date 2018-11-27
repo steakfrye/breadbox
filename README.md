@@ -8,7 +8,7 @@ But to those of us who dove deep into it, we know it gets so much more complex t
 The goal of this website is to allow users to record all of these variables.
 
 To install locally:
-`cd breadbox
-npm install
-npm run client-install
-npm run dev`
+`cd breadbox`
+`npm install`
+`npm run client-install`
+`npm run dev`
