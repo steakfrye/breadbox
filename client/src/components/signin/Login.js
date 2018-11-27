@@ -51,7 +51,7 @@ export class Login extends Component {
 
     return (
       <div>
-      <div className="login">
+      <div className="login pad">
         <div className="container">
           <div className="row ">
             <div className="col-md-8 m-auto">

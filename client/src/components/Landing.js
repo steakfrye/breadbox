@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 export class Landing extends Component {
   render() {
     return (
-      <div className="container landing">
+      <div className="container landing pad">
         <div className="row align-items-center">
           <div className="col-md-12 text-center">
             <h1 className="display-3 mb-4">Welcome to breadbox!</h1>
