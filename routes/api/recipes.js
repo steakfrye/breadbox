@@ -39,6 +39,8 @@ router.post('/', passport.authenticate('jwt', { session: false }), (req, res) =>
 
   const newRecipe =  new Recipe({
     title: req.body.title,
+    weighedin: req.body.weighedin,
+    temptype: req.body.temptype,
     temperature: req.body.temperature,
     fdt: req.body.fdt,
     flour: req.body.flour,

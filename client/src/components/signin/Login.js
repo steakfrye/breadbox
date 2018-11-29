@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { loginUser } from '../../actions/authActions';
-import PropTypes from 'prop-types';
 import { withRouter } from 'react-router-dom';
-import TextFieldGroup from '../common/TextFieldGroup';
+import PropTypes from 'prop-types';
+import InputFieldGroup from '../common/InputFieldGroup';
 
 export class Login extends Component {
   constructor() {
@@ -18,9 +18,9 @@ export class Login extends Component {
   }
 
   componentDidMount() {
-      if(this.props.auth.isAuthenticated) {
-        this.props.history.push('/dashboard');
-      }
+    if(this.props.auth.isAuthenticated) {
+      this.props.history.push('/dashboard');
+    }
   }
 
   componentWillReceiveProps(nextProps) {
@@ -50,14 +50,13 @@ export class Login extends Component {
     const { errors } = this.state;
 
     return (
-      <div>
       <div className="login pad">
         <div className="container">
           <div className="row ">
             <div className="col-md-8 m-auto">
               <h1 className="display-4 font-weight-normal text-center">Please sign in</h1>
               <form onSubmit={this.onSubmit} noValidate>
-                <TextFieldGroup
+                <InputFieldGroup
                   placeholder="Email Address"
                   name="email"
                   type="email"
@@ -65,7 +64,7 @@ export class Login extends Component {
                   onChange={this.onChange}
                   error={errors.email}
                 />
-                <TextFieldGroup
+                <InputFieldGroup
                   placeholder="Password"
                   name="password"
                   type="password"
@@ -83,7 +82,6 @@ export class Login extends Component {
             </div>
           </div>
         </div>
-      </div>
       </div>
     );
   }

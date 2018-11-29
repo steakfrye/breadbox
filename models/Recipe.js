@@ -6,7 +6,15 @@ const RecipeSchema = new Schema({
   user: {
   type: Schema.Types.ObjectId,
   ref: 'users',
-},
+  },
+  weighedin: {
+    type: String,
+    required: true,
+  },
+  temptype: {
+    type: String,
+    required: true,
+  },
   title: {
     type: String,
     required: true,
