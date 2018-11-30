@@ -21,6 +21,10 @@
     "email": "dfryed@gmail.com",
     "url": "www.dylanfrye.me"
   },
+  "engines": {
+    "node": ">=10.0.0",
+    "npm": ">=6.4.0"
+  },
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/steakfrye/breadbox/issues"
