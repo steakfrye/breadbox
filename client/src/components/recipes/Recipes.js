@@ -7,7 +7,6 @@ export class Recipes extends Component {
     return (
       <div className="recipes">
         <Link className="btn" to="/newrecipe">New Recipe</Link>
-        <Recipe />
       </div>
     );
   }

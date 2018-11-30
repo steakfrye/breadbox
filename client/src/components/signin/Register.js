@@ -66,7 +66,7 @@ export class Register extends Component {
                   error={errors.name}
                 />
                 <InputFieldGroup
-                  placeholder="email"
+                  placeholder="Email Address"
                   name="email"
                   type="email"
                   value={this.state.email}

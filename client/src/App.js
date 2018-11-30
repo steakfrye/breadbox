@@ -49,7 +49,7 @@ class App extends Component {
               <Route exact path="/register" component={Register} />
               <Route exact path="/login" component={Login} />
               <Route exact path="/recipes" component={Recipes} />
-              <Route exact path="newrecipe" component={Recipe} />
+              <Route exact path="/newrecipe" component={Recipe} />
             </div>
             <Footer />
           </div>

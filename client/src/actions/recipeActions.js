@@ -1,22 +1,16 @@
 import axios from 'axios';
 
-import { GET_RECIPE, SET_RECIPE, RECIPE_LOADING } from './types';
+import { GET_ERRORS, GET_RECIPE, RECIPE_LOADING } from './types';
 
 // New recipe
-export const submitRecipe = (recipeData) => dispatch => {
-  axios.post('/api/recipes')
-    .then(res =>
-      dispatch({
-        type: SET_RECIPE,
-        payload: res.data,
-      })
-    )
+export const submitRecipe = (recipeData, history) => dispatch => {
+  axios.post('/api/recipes', recipeData)
+    .then(res => history.push('/recipes'))
     .catch(err =>
-    dispatch({
-      type: SET_RECIPE,
-      payload: {}
-    })
-  )
+      dispatch({
+        type: GET_ERRORS,
+        payload: err.response.data,
+      }));
 }
 
 // View recipes
@@ -33,8 +27,7 @@ export const getCurrentRecipe = () => dispatch => {
     dispatch({
       type: GET_RECIPE,
       payload: {}
-    })
-  )
+    }))
 }
 
 export const setRecipeLoading = () => dispatch => {

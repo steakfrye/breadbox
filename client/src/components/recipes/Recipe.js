@@ -69,7 +69,7 @@ export class Recipe extends Component {
         <div className="container">
           <div className="row">
             <div className="col-md-8 m-auto">
-              <h1 className="display-4 font-weight-normal text-center">
+              <h1 className="display-5 font-weight-normal text-center">
                 Create a new recipe
               </h1>
               <form onSubmit={this.onSubmit} noValidate>
@@ -92,7 +92,7 @@ export class Recipe extends Component {
                           checked={this.state.weighedin === 'grams'}
                           onChange={this.onChange}
                         />
-                        <label class="form-check-label" for="grams">
+                        <label className="form-check-label">
                           Grams
                         </label>
                       </div>
@@ -104,7 +104,7 @@ export class Recipe extends Component {
                           checked={this.state.weighedin === 'oz'}
                           onChange={this.onChange}
                         />
-                        <label class="form-check-label" for="oz">
+                        <label className="form-check-label">
                           Ounces
                         </label>
                       </div>
@@ -116,7 +116,7 @@ export class Recipe extends Component {
                           checked={this.state.weighedin === 'cups'}
                           onChange={this.onChange}
                         />
-                        <label class="form-check-label" for="cups">
+                        <label className="form-check-label">
                           Cups
                         </label>
                       </div>
@@ -132,7 +132,7 @@ export class Recipe extends Component {
                             checked={this.state.temptype === 'fahrenheit'}
                             onChange={this.onChange}
                           />
-                          <label class="form-check-label" for="fahrenheit">
+                          <label className="form-check-label">
                             Fahrenheit
                           </label>
                         </div>
@@ -144,7 +144,7 @@ export class Recipe extends Component {
                             checked={this.state.temptype === 'celsius'}
                             onChange={this.onChange}
                           />
-                          <label class="form-check-label" for="celsius">
+                          <label className="form-check-label">
                             Celsius
                           </label>
                         </div>
@@ -200,7 +200,7 @@ export class Recipe extends Component {
                   onChange={this.onChange}
                   error={errors.addition}
                 />
-                <InputFieldGroup type="submit" className="btn btn-lg btn-primary btn-block"/>
+                <input type="submit" className="btn btn-lg btn-primary btn-block"/>
               </form>
             </div>
           </div>
