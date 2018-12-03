@@ -12,7 +12,8 @@ export const registerUser = (userData, history) => dispatch => {
       dispatch({
         type: GET_ERRORS,
         payload: err.response.data,
-      }))
+      })
+    );
 };
 
 // Login - Get user token
@@ -32,9 +33,10 @@ export const loginUser = userData => dispatch => {
     })
     .catch(err =>
       dispatch({
-      type: GET_ERRORS,
-      payload: err.response.data,
-    }))
+        type: GET_ERRORS,
+        payload: err.response.data,
+      })
+    );
 };
 
 export const setCurrentUser = (decoded) => {

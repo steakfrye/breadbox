@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { submitRecipe } from '../../actions/recipeActions';
+import { addRecipe } from '../../actions/recipeActions';
 import { withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import InputFieldGroup from '../common/InputFieldGroup';
@@ -30,22 +30,26 @@ export class Recipe extends Component {
     }
   }
 
-  componentWillReceiveProps(nextProps) {
-    if(nextProps.auth.submitRecipe) {
+  componentWillReceiveProps(newProps) {
+    if(newProps.auth.addRecipe) {
       this.props.history.push('/recipes')
-    } else if(nextProps.errors) {
-      this.setState({errors: nextProps.errors});
+    } else if(newProps.errors) {
+      this.setState({ errors: newProps.errors });
     }
   }
 
   onChange(e) {
-    this.setState({[e.target.name]: e.target.value});
+    this.setState({ [e.target.name]: e.target.value });
   }
 
   onSubmit(e) {
     e.preventDefault();
 
+    const { user } = this.props.auth;
+
     const recipeData = {
+      name: user.name,
+      avatar: user.avatar,
       weighedin: this.state.weighedin,
       temptype: this.state.temptype,
       title: this.state.title,
@@ -58,7 +62,7 @@ export class Recipe extends Component {
       addition: this.state.addition,
     };
 
-    this.props.submitRecipe(recipeData);
+    this.props.addRecipe(recipeData);
   }
 
   render() {
@@ -211,7 +215,7 @@ export class Recipe extends Component {
 }
 
 Recipe.propTypes = {
-  submitRecipe: PropTypes.func.isRequired,
+  addRecipe: PropTypes.func.isRequired,
   auth: PropTypes.object.isRequired,
   errors: PropTypes.object.isRequired,
 }
@@ -221,4 +225,4 @@ const mapStateToProps = (state) => ({
   errors: state.errors,
 })
 
-export default connect(mapStateToProps, { submitRecipe })(withRouter(Recipe));
+export default connect(mapStateToProps, { addRecipe })(withRouter(Recipe));

@@ -1,37 +1,44 @@
 import axios from 'axios';
 
-import { GET_ERRORS, GET_RECIPE, RECIPE_LOADING } from './types';
+import { ADD_RECIPE, GET_ERRORS, GET_RECIPES, RECIPE_LOADING } from './types';
 
 // New recipe
-export const submitRecipe = (recipeData, history) => dispatch => {
+export const addRecipe = recipeData => dispatch => {
   axios.post('/api/recipes', recipeData)
-    .then(res => history.push('/recipes'))
-    .catch(err =>
-      dispatch({
-        type: GET_ERRORS,
-        payload: err.response.data,
-      }));
-}
-
-// View recipes
-export const getCurrentRecipe = () => dispatch => {
-  dispatch(setRecipeLoading());
-  axios.get('/api/profile')
     .then(res =>
       dispatch({
-        type: GET_RECIPE,
+        type: ADD_RECIPE,
         payload: res.data,
       })
     )
     .catch(err =>
-    dispatch({
-      type: GET_RECIPE,
-      payload: {}
-    }))
-}
+      dispatch({
+        type: GET_ERRORS,
+        payload: err.response.data,
+      })
+    );
+};
 
-export const setRecipeLoading = () => dispatch => {
+// View recipes
+export const getRecipes = () => dispatch => {
+  dispatch(setRecipeLoading());
+  axios.get('/api/recipes')
+    .then(res =>
+      dispatch({
+        type: GET_RECIPES,
+        payload: res.data,
+      })
+    )
+    .catch(err =>
+      dispatch({
+        type: GET_RECIPES,
+        payload: null
+      })
+    );
+};
+
+export const setRecipeLoading = () => {
   return {
     type: RECIPE_LOADING,
   };
-}
+};

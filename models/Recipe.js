@@ -7,6 +7,12 @@ const RecipeSchema = new Schema({
   type: Schema.Types.ObjectId,
   ref: 'users',
   },
+  name: {
+    type: String,
+  },
+  avatar: {
+    type: String,
+  },
   weighedin: {
     type: String,
     required: true,

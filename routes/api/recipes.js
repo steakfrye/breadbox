@@ -5,6 +5,7 @@ const passport = require('passport');
 
 const Profile = require('../../models/Profile'); // Profile model
 const Recipe = require('../../models/Recipe'); // Model
+
 const validateRecipeInput = require('../../validation/recipe'); // Validation
 const validateCommentInput = require('../../validation/comment');
 
@@ -48,7 +49,8 @@ router.post('/', passport.authenticate('jwt', { session: false }), (req, res) =>
     salt: req.body.salt,
     yeast: req.body.yeast,
     addition: req.body.addition,
-    user: req.user.id,
+    name: req.user.name,
+    avatar: req.user.avatar,
   });
 
   newRecipe.save().then(recipe => res.json(recipe));

@@ -2,8 +2,10 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { loginUser } from '../../actions/authActions';
 import { withRouter } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import InputFieldGroup from '../common/InputFieldGroup';
+import Register from './Register';
 
 export class Login extends Component {
   constructor() {
@@ -52,7 +54,7 @@ export class Login extends Component {
     return (
       <div className="login pad">
         <div className="container">
-          <div className="row ">
+          <div className="row">
             <div className="col-md-8 m-auto">
               <h1 className="display-4 font-weight-normal text-center">Please sign in</h1>
               <form onSubmit={this.onSubmit} noValidate>
@@ -80,6 +82,11 @@ export class Login extends Component {
                 <input type="submit" className="btn btn-lg btn-primary btn-block"/>
               </form>
             </div>
+          </div>
+          <div className="text-center">
+            <small className="col-sm">
+              Don't have an account yet? Sign up <Link to="/register">here.</Link>
+            </small>
           </div>
         </div>
       </div>

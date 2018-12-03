@@ -46,4 +46,7 @@ if(process.env.NODE_ENV === 'production') {
 
 const port = process.env.PORT || 5000;
 
-app.listen(port, () => console.log(`Server running on ${port}. DB set to ${db}`));
+app.listen(port, () => console.log(`Server running on ${port}. Database connected.`))
+  .on('error', console.log);
+
+process.on('SIGINT', () => { console.log("Closing server."); process.exit(); });

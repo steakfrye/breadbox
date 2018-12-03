@@ -1,4 +1,7 @@
+export const ADD_RECIPE = 'ADD_RECIPE';
 export const CLEAR_CURRENT_PROFILE = 'CLEAR_CURRENT_PROFILE';
+export const DELETE_PROFILE = 'DELETE_PROFILE';
+export const DELETE_RECIPE = 'DELETE_RECIPE';
 export const GET_ERRORS = 'GET_ERRORS';
 export const GET_PROFILE = 'GET_PROFILE';
 export const GET_PROFILES = 'GET_PROFILES';
@@ -6,7 +9,6 @@ export const GET_RECIPE = 'GET_RECIPE';
 export const GET_RECIPES = 'GET_RECIPES';
 export const PROFILE_LOADING = 'PROFILE_LOADING';
 export const PROFILE_NOT_FOUND = 'PROFILE_NOT_FOUND';
+export const RECIPE_LOADING = 'RECIPE_LOADING';
 export const RECIPE_NOT_FOUND = 'RECIPE_NOT_FOUND';
 export const SET_CURRENT_USER = 'SET_CURRENT_USER';
-export const SET_RECIPE = 'SET_RECIPE';
-export const RECIPE_LOADING = 'RECIPE_LOADING';
