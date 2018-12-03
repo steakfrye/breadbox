@@ -1,15 +1,18 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { clearProfile } from './actions/profileActions';
 import { Provider } from 'react-redux';
 import { setCurrentUser, logoutUser } from './actions/authActions';
 import jwt_decode from 'jwt-decode';
 import setAuthToken from './utils/setAuthToken';
 
+import Dashboard from './components/dashboard/Dashboard';
 import Footer from './components/layout/Footer';
 import Landing from './components/Landing';
 import Login from './components/signin/Login';
 import Navbar from './components/layout/Navbar';
+import PrivateRoute from './components/common/PrivateRoute';
+import Profile from './components/profile/Profile';
 import Recipe from './components/recipes/Recipe';
 import Recipes from './components/recipes/Recipes';
 import Register from './components/signin/Register';
@@ -48,8 +51,12 @@ class App extends Component {
             <div className="container">
               <Route exact path="/register" component={Register} />
               <Route exact path="/login" component={Login} />
-              <Route exact path="/recipes" component={Recipes} />
-              <Route exact path="/newrecipe" component={Recipe} />
+              <Switch>
+                <PrivateRoute exact path="/dashboard" component={Dashboard}/>
+                <PrivateRoute exact path="/recipes" component={Recipes} />
+                <PrivateRoute exact path="/newrecipe" component={Recipe} />
+                <PrivateRoute exact path="/profilea" component={Profile} />
+              </Switch>
             </div>
             <Footer />
           </div>

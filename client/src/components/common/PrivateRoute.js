@@ -3,15 +3,14 @@ import { Route, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
-const PrivateRoute = ({component: Component, auth, ...rest}) => (
+const PrivateRoute = ({ component: Component, auth, ...rest }) => (
+  // If logged in, render next component, else render login page
   <Route
     {...rest}
-    render = {props =>
-      auth.isAuthenticated === true ? (
-        <Component {...props} />
-      ) : (
-        <Redirect to="/login" />
-      )
+    render = {(props) =>
+      auth.isAuthenticated === true
+      ? <Component {...props} />
+      : <Redirect to="/login" />
     }
   />
 );
@@ -24,4 +23,4 @@ const mapStateToProps = state => ({
   auth: state.auth,
 });
 
-export default connect()(PrivateRoute);
+export default connect(mapStateToProps)(PrivateRoute);
