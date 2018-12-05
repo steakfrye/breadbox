@@ -4,7 +4,6 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { getRecipes } from '../../actions/recipeActions';
 
-import Recipe from './Recipe';
 import RecipeFeed from './RecipeFeed';
 
 export class Recipes extends Component {
@@ -24,8 +23,10 @@ export class Recipes extends Component {
 
     return (
       <div className="recipes">
-        <Link className="btn btn-primary" to="/newrecipe">New Recipe</Link>
-        <div className="container">
+        <div className="col-md-1">
+          <Link className="btn btn-primary" to="/newrecipe">New Recipe</Link>
+        </div>
+        <div className="container pad">
           <div className="row">
             <div className="col-md-12">
               {recipeContent}
@@ -43,7 +44,7 @@ Recipes.propTypes = {
 }
 
 const mapStateToProps = state => ({
-  recipe: state.recipe,
+  recipe: state.recipe
 });
 
 export default connect(mapStateToProps, { getRecipes })(Recipes);

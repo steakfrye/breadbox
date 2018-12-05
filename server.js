@@ -1,36 +1,40 @@
 //import modules
 const bodyParser = require('body-parser');
 const express = require('express');
+const helmet = require('helmet');
 const mongoose = require('mongoose');
 const passport = require('passport');
 const path = require('path');
 
 const app = express();
 
-//body-parser setup
+// Implement helmet
+app.use(helmet());
+
+// Body-parser setup
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
-//define routes
+// Define routes
 const profile = require('./routes/api/profile');
 const recipes = require('./routes/api/recipes');
 const users = require('./routes/api/users');
 
-//DB config
+// DB config
 const db = require('./config/keys').mongoURI;
 
-//connect DB
+// Connect DB
 mongoose
   .connect(db, { useNewUrlParser: true })
   .then(() => console.log('MongoDB connected.'))
   .catch(err => console.log(err));
 
-//passport middleware
+// Passport middleware
 app.use(passport.initialize());
 
 require('./config/passport')(passport);
 
-//use routes
+// Use routes
 app.use('/api/profile', profile);
 app.use('/api/recipes', recipes);
 app.use('/api/users', users);

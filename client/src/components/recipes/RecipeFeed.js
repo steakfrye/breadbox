@@ -6,12 +6,14 @@ class RecipeFeed extends Component {
   render() {
     const { recipes } = this.props;
 
-    return recipes.map(post => <RecipeItem key={post._id} post={post} />);
+    return (
+      recipes.map(recipe => <RecipeItem key={recipe._id} recipe={recipe} />)
+    );
   }
 }
 
 RecipeFeed.propTypes = {
-  recipes: PropTypes.array.isRequired,
+  recipe: PropTypes.array.isRequired,
 };
 
 export default RecipeFeed;

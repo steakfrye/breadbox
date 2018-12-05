@@ -5,7 +5,6 @@ import { withRouter } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import InputFieldGroup from '../common/InputFieldGroup';
-import Register from './Register';
 
 export class Login extends Component {
   constructor() {

@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { addRecipe } from '../../actions/recipeActions';
-import { withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import InputFieldGroup from '../common/InputFieldGroup';
 
@@ -9,8 +8,8 @@ export class Recipe extends Component {
   constructor() {
     super();
     this.state = {
-      weighedin: 'grams',
-      temptype: 'fahrenheit',
+      weighedin: 'Grams',
+      temptype: 'Fahrenheit',
       title: '',
       temperature: '',
       fdt: '',
@@ -93,7 +92,7 @@ export class Recipe extends Component {
                           type="radio"
                           className="form-check-input"
                           value="grams"
-                          checked={this.state.weighedin === 'grams'}
+                          checked={this.state.weighedin === 'Grams'}
                           onChange={this.onChange}
                         />
                         <label className="form-check-label">
@@ -105,7 +104,7 @@ export class Recipe extends Component {
                           type="radio"
                           className="form-check-input"
                           value="oz"
-                          checked={this.state.weighedin === 'oz'}
+                          checked={this.state.weighedin === 'Ounces'}
                           onChange={this.onChange}
                         />
                         <label className="form-check-label">
@@ -117,7 +116,7 @@ export class Recipe extends Component {
                           type="radio"
                           className="form-check-input"
                           value="cups"
-                          checked={this.state.weighedin === 'cups'}
+                          checked={this.state.weighedin === 'Cups'}
                           onChange={this.onChange}
                         />
                         <label className="form-check-label">
@@ -133,7 +132,7 @@ export class Recipe extends Component {
                             type="radio"
                             className="form-check-input"
                             value="fahrenheit"
-                            checked={this.state.temptype === 'fahrenheit'}
+                            checked={this.state.temptype === 'Fahrenheit'}
                             onChange={this.onChange}
                           />
                           <label className="form-check-label">
@@ -145,7 +144,7 @@ export class Recipe extends Component {
                             type="radio"
                             className="form-check-input"
                             value="celsius"
-                            checked={this.state.temptype === 'celsius'}
+                            checked={this.state.temptype === 'Celsius'}
                             onChange={this.onChange}
                           />
                           <label className="form-check-label">
@@ -156,7 +155,7 @@ export class Recipe extends Component {
                   </fieldset>
                 </div>
                 <InputFieldGroup
-                  placeholder="Temperature"
+                  placeholder="Water Temperature"
                   name="temperature"
                   value={this.state.temperature}
                   onChange={this.onChange}
@@ -177,7 +176,7 @@ export class Recipe extends Component {
                   error={errors.flour}
                 />
                 <InputFieldGroup
-                  placeholder="Water Temperature"
+                  placeholder="Water"
                   name="water"
                   value={this.state.water}
                   onChange={this.onChange}
@@ -220,9 +219,9 @@ Recipe.propTypes = {
   errors: PropTypes.object.isRequired,
 }
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = state => ({
   auth: state.auth,
   errors: state.errors,
 })
 
-export default connect(mapStateToProps, { addRecipe })(withRouter(Recipe));
+export default connect(mapStateToProps, { addRecipe })(Recipe);
