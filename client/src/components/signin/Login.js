@@ -51,7 +51,7 @@ export class Login extends Component {
     const { errors } = this.state;
 
     return (
-      <div className="login pad">
+      <div className="login">
         <div className="container">
           <div className="row">
             <div className="col-md-8 m-auto">

@@ -51,6 +51,7 @@ router.post('/', passport.authenticate('jwt', { session: false }), (req, res) =>
     addition: req.body.addition,
     name: req.user.name,
     avatar: req.user.avatar,
+    user: req.user.id,
   });
 
   newRecipe.save().then(recipe => res.json(recipe));

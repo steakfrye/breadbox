@@ -13,7 +13,7 @@ class RecipeFeed extends Component {
 }
 
 RecipeFeed.propTypes = {
-  recipe: PropTypes.array.isRequired,
+  recipes: PropTypes.array.isRequired,
 };
 
 export default RecipeFeed;

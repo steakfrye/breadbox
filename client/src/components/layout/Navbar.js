@@ -39,7 +39,7 @@ export class Navbar extends Component {
     )
 
     return (
-      <div>
+      <div className="pad">
         <nav className="navbar navbar-expand-lg navbar-light bg-light">
           <Link to="/dashboard" className="navbar-brand">breadbox</Link>
           <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#mobile-nav">

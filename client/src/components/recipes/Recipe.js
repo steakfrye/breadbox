@@ -23,19 +23,22 @@ export class Recipe extends Component {
     this.onChange = this.onChange.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
   }
+  
   componentDidMount() {
-    if(!this.props.auth.isAuthenticated) {
+    if(!this.props.auth.isAuthenticated || this.props.errors === "Unauthorized") {
       this.props.history.push('/login');
     }
   }
 
   componentWillReceiveProps(newProps) {
-    if(newProps.auth.addRecipe) {
-      this.props.history.push('/recipes')
-    } else if(newProps.errors) {
+    if (newProps.errors) {
       this.setState({ errors: newProps.errors });
     }
   }
+
+  // componentWillMount() {
+  //   if (this.props.)
+  // }
 
   onChange(e) {
     this.setState({ [e.target.name]: e.target.value });
@@ -66,6 +69,7 @@ export class Recipe extends Component {
 
   render() {
     const { errors } = this.state;
+    const { user } = this.props.auth;
 
     return (
       <div className="recipe">
@@ -75,7 +79,7 @@ export class Recipe extends Component {
               <h1 className="display-5 font-weight-normal text-center">
                 Create a new recipe
               </h1>
-              <form onSubmit={this.onSubmit} noValidate>
+              <form onSubmit={this.onSubmit} key={user.id} noValidate>
                 <InputFieldGroup
                   placeholder="Title"
                   name="title"

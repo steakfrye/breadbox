@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-import { ADD_RECIPE, GET_ERRORS, GET_RECIPES, RECIPE_LOADING } from './types';
+import { ADD_RECIPE, GET_ERRORS, GET_RECIPES, RECIPE_LOADING, DELETE_RECIPE } from './types';
 
 // New recipe
 export const addRecipe = recipeData => dispatch => {
@@ -36,6 +36,24 @@ export const getRecipes = () => dispatch => {
       })
     );
 };
+
+// Delete recipe
+export const deleteRecipe = id => dispatch => {
+  axios.delete('/api/recipes/' + id)
+    .then(res =>
+      dispatch({
+        type: DELETE_RECIPE,
+        payload: res.data,
+      })
+    )
+    .catch(err =>
+      dispatch({
+        type: GET_ERRORS,
+        payload: err.response.data,
+      })
+    );
+}
+
 
 export const setRecipeLoading = () => {
   return {
