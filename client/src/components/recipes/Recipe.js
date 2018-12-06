@@ -23,7 +23,7 @@ export class Recipe extends Component {
     this.onChange = this.onChange.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
   }
-  
+
   componentDidMount() {
     if(!this.props.auth.isAuthenticated || this.props.errors === "Unauthorized") {
       this.props.history.push('/login');
@@ -31,17 +31,16 @@ export class Recipe extends Component {
   }
 
   componentWillReceiveProps(newProps) {
-    if (newProps.errors) {
+    if (newProps.errors === undefined) {
       this.setState({ errors: newProps.errors });
+    } else {
+      this.props.history.push('/recipes');
     }
   }
 
-  // componentWillMount() {
-  //   if (this.props.)
-  // }
-
   onChange(e) {
     this.setState({ [e.target.name]: e.target.value });
+    this.setState({ errors: {} });
   }
 
   onSubmit(e) {

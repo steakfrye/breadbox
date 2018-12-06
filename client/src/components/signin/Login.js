@@ -26,7 +26,7 @@ export class Login extends Component {
 
   componentWillReceiveProps(nextProps) {
     if(nextProps.auth.isAuthenticated) {
-      this.props.history.push('/dashboard')
+      this.props.history.push('/dashboard');
     } else if(nextProps.errors) {
       this.setState({errors: nextProps.errors});
     }
@@ -99,7 +99,7 @@ Login.propTypes = {
   errors: PropTypes.object.isRequired,
 }
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = state => ({
   auth: state.auth,
   errors: state.errors,
 })

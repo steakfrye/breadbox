@@ -1,9 +1,17 @@
 import axios from 'axios';
 
-import { ADD_RECIPE, GET_ERRORS, GET_RECIPES, RECIPE_LOADING, DELETE_RECIPE } from './types';
+import {
+    ADD_RECIPE,
+    CLEAR_ERRORS,
+    DELETE_RECIPE,
+    GET_ERRORS,
+    GET_RECIPES,
+    RECIPE_LOADING
+  } from './types';
 
 // New recipe
 export const addRecipe = recipeData => dispatch => {
+  dispatch(clearErrors());
   axios.post('/api/recipes', recipeData)
     .then(res =>
       dispatch({
@@ -43,7 +51,7 @@ export const deleteRecipe = id => dispatch => {
     .then(res =>
       dispatch({
         type: DELETE_RECIPE,
-        payload: res.data,
+        payload: id
       })
     )
     .catch(err =>
@@ -54,9 +62,16 @@ export const deleteRecipe = id => dispatch => {
     );
 }
 
-
+// Set Loading
 export const setRecipeLoading = () => {
   return {
     type: RECIPE_LOADING,
+  };
+};
+
+// Clear errors
+export const clearErrors = () => {
+  return {
+    type: CLEAR_ERRORS,
   };
 };

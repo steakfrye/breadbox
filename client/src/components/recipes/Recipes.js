@@ -15,7 +15,7 @@ export class Recipes extends Component {
     const{ recipes, loading } = this.props.recipe;
     let recipeContent;
 
-    if(recipes === null || loading) {
+    if(recipes.length === 0 || loading) {
       recipeContent = <h1>No content.</h1>
     } else {
       recipeContent = <RecipeFeed recipes={recipes} />

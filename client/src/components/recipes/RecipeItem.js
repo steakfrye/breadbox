@@ -12,25 +12,37 @@ class RecipeItem extends Component {
   }
 
   onDeleteClick(id) {
-    deleteRecipe(id);
+    this.props.deleteRecipe(id);
   }
 
   render() {
     const { recipe, auth } = this.props;
-    const t = recipe.temptype[0]
+    const t = recipe.temptype[0];
 
     return (
       <div className="recipe-item card card-body mb-3">
-        <div className="row">
-          <div className="col-md-2">
-            <Link to="/profile">
-              <img
-                className="rounded-circle d-md-block"
-                style={{width: '50px'}}
-                src={recipe.avatar}
-                alt={recipe.name}
-              />
-            </Link>
+        <div className="container">
+          <div className="row">
+            <div className="col offset-md-11">
+              {recipe.user === auth.user.id ? (
+                <button
+                  onClick={this.onDeleteClick.bind(this, recipe._id)}
+                  type="button"
+                  className="btn btn-danger mr-1">
+                  <i className="fas fa-times"/>
+                </button>
+              ) : null}
+            </div>
+            <div className="col-md-2">
+              <Link to="/profile">
+                <img
+                  className="rounded-circle d-md-block"
+                  style={{width: '50px'}}
+                  src={recipe.avatar}
+                  alt={recipe.name}
+                />
+              </Link>
+            </div>
           </div>
         </div>
         <div className="row">
@@ -66,14 +78,6 @@ class RecipeItem extends Component {
                 <Link to={`/recipe/${recipe._id}`} className="btn btn-primary mr-1">
                   Comments
                 </Link>
-                {recipe.user === auth.user.id ? (
-                  <button
-                    onClick={this.onDeleteClick(recipe.id)}
-                    type="button"
-                    className="btn btn-danger mr-1">
-                    <i className="fas fa-times"/>
-                  </button>
-                ) : null}
               </div>
             </div>
           </div>
@@ -90,6 +94,7 @@ function formatDate(date) {
 };
 
 RecipeItem.propTypes = {
+  deleteRecipe: PropTypes.func.isRequired,
   recipe: PropTypes.object.isRequired,
   auth: PropTypes.object.isRequired,
 }
@@ -98,4 +103,4 @@ const mapStateToProps = state => ({
   auth: state.auth,
 });
 
-export default connect(mapStateToProps)(RecipeItem);
+export default connect(mapStateToProps, { deleteRecipe })(RecipeItem);

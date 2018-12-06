@@ -1,5 +1,6 @@
 export const ADD_RECIPE = 'ADD_RECIPE';
 export const CLEAR_CURRENT_PROFILE = 'CLEAR_CURRENT_PROFILE';
+export const CLEAR_ERRORS = 'CLEAR_ERRORS';
 export const DELETE_PROFILE = 'DELETE_PROFILE';
 export const DELETE_RECIPE = 'DELETE_RECIPE';
 export const GET_ERRORS = 'GET_ERRORS';

@@ -1,4 +1,4 @@
-import { ADD_RECIPE, GET_RECIPES, RECIPE_LOADING } from '../actions/types';
+import { ADD_RECIPE, DELETE_RECIPE, GET_RECIPES, RECIPE_LOADING } from '../actions/types';
 
 const initialState = {
   recipes: [],
@@ -19,6 +19,11 @@ export default function(state = initialState, action) {
         recipes: action.payload,
         loading: false,
       };
+    case DELETE_RECIPE:
+      return {
+        ...state,
+        loading: true,
+      }
     case ADD_RECIPE:
       return {
         ...state,
