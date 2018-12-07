@@ -33,33 +33,33 @@ const RecipeSchema = new Schema({
   },
   flour: {
     type: String,
-    amount: {
-      type: Number,
-      required: true,
-    },
+    required: true,
+  },
+  flouramount: {
+    type: Number,
     required: true,
   },
   water: {
     type: Number,
     required: true,
   },
-  salt: { //percentage
+  salt: {
     type: Number,
     default: 2,
   },
   yeast: {
-    sourdough: {
-      type: Boolean,
-    },
-    amount: {
-      type: Number,
-    },
+    type: Boolean,
+    required: true,
+  },
+  yeastamount: {
+    type: Number,
+    required: true,
   },
   addition: { //extra ingredients
     type: String,
-    amount: {
-      type: Number,
-    },
+  },
+  additionamount: {
+    type: Number,
   },
   date: {
     type: Date,

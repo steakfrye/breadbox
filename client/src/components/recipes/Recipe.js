@@ -14,10 +14,13 @@ export class Recipe extends Component {
       temperature: '',
       fdt: '',
       flour: '',
+      flouramount: '',
       water: '',
       salt: '',
-      yeast: '',
+      yeast: false,
+      yeastamount: '',
       addition: '',
+      additionamount: '',
       errors: {},
     };
     this.onChange = this.onChange.bind(this);
@@ -31,16 +34,13 @@ export class Recipe extends Component {
   }
 
   componentWillReceiveProps(newProps) {
-    if (newProps.errors === undefined) {
+    if (newProps.errors) {
       this.setState({ errors: newProps.errors });
-    } else {
-      this.props.history.push('/recipes');
     }
   }
 
   onChange(e) {
     this.setState({ [e.target.name]: e.target.value });
-    this.setState({ errors: {} });
   }
 
   onSubmit(e) {
@@ -57,10 +57,13 @@ export class Recipe extends Component {
       temperature: this.state.temperature,
       fdt: this.state.fdt,
       flour: this.state.flour,
+      flouramount: this.state.flouramount,
       water: this.state.water,
       salt: this.state.salt,
       yeast: this.state.yeast,
+      yeastamount: this.state.yeastamount,
       addition: this.state.addition,
+      additionamount: this.state.additionamount,
     };
 
     this.props.addRecipe(recipeData);
@@ -160,6 +163,7 @@ export class Recipe extends Component {
                 <InputFieldGroup
                   placeholder="Water Temperature"
                   name="temperature"
+                  type="number"
                   value={this.state.temperature}
                   onChange={this.onChange}
                   error={errors.temperature}
@@ -167,19 +171,37 @@ export class Recipe extends Component {
                 <InputFieldGroup
                   placeholder="Final Dough Temperature"
                   name="fdt"
+                  type="number"
                   value={this.state.fdt}
                   onChange={this.onChange}
                   error={errors.fdt}
                 />
-                <InputFieldGroup
-                  placeholder="Flour"
-                  name="flour"
-                  value={this.state.flour}
-                  onChange={this.onChange}
-                  error={errors.flour}
-                />
+                <div className="container">
+                  <div className="row">
+                    <div className="col-sm-6">
+                      <InputFieldGroup
+                        placeholder="Flour Used"
+                        name="flour"
+                        value={this.state.flour}
+                        onChange={this.onChange}
+                        error={errors.flour}
+                      />
+                    </div>
+                    <div className="col-sm-6">
+                      <InputFieldGroup
+                        placeholder="Flour Amount"
+                        type="number"
+                        name="flouramount"
+                        value={this.state.flouramount}
+                        onChange={this.onChange}
+                        error={errors.flouramount}
+                      />
+                    </div>
+                  </div>
+                </div>
                 <InputFieldGroup
                   placeholder="Water"
+                  type="number"
                   name="water"
                   value={this.state.water}
                   onChange={this.onChange}
@@ -187,25 +209,75 @@ export class Recipe extends Component {
                 />
                 <InputFieldGroup
                   placeholder="Salt"
+                  type="number"
                   name="salt"
                   value={this.state.salt}
                   onChange={this.onChange}
                   error={errors.salt}
                 />
-                <InputFieldGroup
-                  placeholder="Yeast"
-                  name="yeast"
-                  value={this.state.yeast}
-                  onChange={this.onChange}
-                  error={errors.yeast}
-                />
-                <InputFieldGroup
-                  placeholder="Additional ingredients"
-                  name="addition"
-                  value={this.state.addition}
-                  onChange={this.onChange}
-                  error={errors.addition}
-                />
+                <div className="container">
+                  <div className="row">
+                    <div className="col-sm-6">
+                      <div className="form-check">
+                        <input
+                          type="radio"
+                          className="form-check-input"
+                          value="sourdough"
+                          checked={this.state.yeast === false}
+                          onChange={this.onChange}
+                        />
+                        <label className="form-check-label">
+                          Sourdough
+                        </label>
+                      </div>
+                      <div className="form-check">
+                        <input
+                          type="radio"
+                          className="form-check-input"
+                          value="yeast"
+                          checked={this.state.yeast === true}
+                          onChange={this.onChange}
+                        />
+                        <label className="form-check-label">
+                          Yeast
+                        </label>
+                      </div>
+                    </div>
+                    </div>
+                    <div className="col-sm-6">
+                      <InputFieldGroup
+                        placeholder="Yeast Amount"
+                        type="number"
+                        name="yeastamount"
+                        value={this.state.yeastamount}
+                        onChange={this.onChange}
+                        error={errors.yeastamount}
+                      />
+                    </div>
+                </div>
+                <div className="container">
+                  <div className="row">
+                    <div className="col-sm-6">
+                      <InputFieldGroup
+                        placeholder="Additional ingredients"
+                        name="addition"
+                        value={this.state.addition}
+                        onChange={this.onChange}
+                        error={errors.addition}
+                      />
+                    </div>
+                    <div className="col-sm-6">
+                      <InputFieldGroup
+                        placeholder="Amount added"
+                        type="number"
+                        name="additionamount"
+                        value={this.state.additionamount}
+                        onChange={this.onChange}
+                        error={errors.additionamount}
+                      />
+                    </div>
+                  </div>
+                </div>
                 <input type="submit" className="btn btn-lg btn-primary btn-block"/>
               </form>
             </div>

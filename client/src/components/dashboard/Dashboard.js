@@ -6,8 +6,8 @@ export class Dashboard extends Component {
     return (
       <div className="dashboard">
         <Link to="/newrecipe">Create new recipe.</Link>
-        <h1>My recipes.</h1>
-        <h1>My profile.</h1>
+        <h1>My <Link to="/recipes">recipes.</Link></h1>
+        <h1>My <Link to="/profile">profile.</Link></h1>
 
       </div>
     );
