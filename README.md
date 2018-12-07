@@ -7,8 +7,46 @@ But to those of us who dove deep into it, we know it gets so much more complex t
 
 The goal of this website is to allow users to record all of these variables.
 
-To install locally:
-`cd breadbox`
-`npm install`
-`npm run client-install`
-`npm run dev`
+## Quick Start
+
+```bash
+# Install dependencies for server
+npm install
+
+# Install dependencies for client
+npm run client-install
+
+# Run the client & server with concurrently
+npm run dev
+
+# Run the Express server only
+npm run server
+
+# Run the React client only
+npm run client
+
+# Server runs on http://localhost:5000 and client on http://localhost:3000
+```
+
+You will need to create a keys_dev.js in the server config folder with
+
+```
+module.exports = {
+  mongoURI: 'YOUR_OWN_MONGO_URI',
+  secretOrKey: 'YOUR_OWN_SECRET'
+};
+```
+
+## App Info
+
+### Author
+
+Dylan Frye
+
+### Version
+
+1.0.0
+
+### License
+
+This project is licensed under the MIT License
