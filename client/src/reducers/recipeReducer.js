@@ -22,12 +22,13 @@ export default function(state = initialState, action) {
     case DELETE_RECIPE:
       return {
         ...state,
-        loading: true,
+        recipes: state.recipes.filter(recipe => recipe._id !== action.payload)
       }
     case ADD_RECIPE:
       return {
         ...state,
-        recipes: [action.payload, ...state.recipes]
+        recipes: [action.payload, ...state.recipes],
+        loading: true
       };
     default:
       return state;

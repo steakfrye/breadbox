@@ -8,11 +8,20 @@ import { deleteRecipe } from '../../actions/recipeActions';
 class RecipeItem extends Component {
   constructor() {
     super();
+    this.state = {
+      errors: {}
+    }
     this.onDeleteClick = this.onDeleteClick.bind(this);
   }
 
   onDeleteClick(id) {
     this.props.deleteRecipe(id);
+  }
+
+  componentWillReceiveProps(newProps) {
+    if (newProps.errors) {
+      this.setState({ errors: newProps.errors });
+    }
   }
 
   render() {
@@ -62,13 +71,11 @@ class RecipeItem extends Component {
               <div className="col">
                 <h4>Water Temperature: {recipe.temperature}° {t}</h4>
                 <h4>Final Dough Temperature: {recipe.fdt}° {t}</h4>
-                <h4>Flour: {recipe.flour} {recipe.flouramount} {recipe.weighedin}</h4>
+                <h4>Flour: {recipe.flour}--{recipe.flouramount} {recipe.weighedin}</h4>
                 <h4>Water: {recipe.water} {recipe.weighedin}</h4>
                 <h4>Salt: {recipe.salt} {recipe.weighedin}</h4>
-                <h4>Yeast:
-                  {recipe.yeast === false ? "Sourdough" : "Yeast"}
-                  {recipe.yeastamount}
-                  {recipe.weighedin}
+                <h4>
+                  Leaven: {recipe.yeast === false ? "Sourdough" : "Yeast"}--{recipe.yeastamount} {recipe.weighedin}
                 </h4>
               </div>
             </div>
@@ -106,6 +113,7 @@ RecipeItem.propTypes = {
 
 const mapStateToProps = state => ({
   auth: state.auth,
+  errors: state.errors,
 });
 
 export default connect(mapStateToProps, { deleteRecipe })(RecipeItem);

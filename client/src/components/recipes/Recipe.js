@@ -36,6 +36,8 @@ export class Recipe extends Component {
   componentWillReceiveProps(newProps) {
     if (newProps.errors) {
       this.setState({ errors: newProps.errors });
+    } else {
+      this.props.history.push('/recipes')
     }
   }
 
@@ -181,27 +183,25 @@ export class Recipe extends Component {
                   onChange={this.onChange}
                   error={errors.fdt}
                 />
-                <div className="container">
-                  <div className="row">
-                    <div className="col-sm-6">
-                      <InputFieldGroup
-                        placeholder="Flour Used"
-                        name="flour"
-                        value={this.state.flour}
-                        onChange={this.onChange}
-                        error={errors.flour}
-                      />
-                    </div>
-                    <div className="col-sm-6">
-                      <InputFieldGroup
-                        placeholder="Flour Amount"
-                        type="number"
-                        name="flouramount"
-                        value={this.state.flouramount}
-                        onChange={this.onChange}
-                        error={errors.flouramount}
-                      />
-                    </div>
+                <div className="row">
+                  <div className="col-sm-6">
+                    <InputFieldGroup
+                      placeholder="Flour Used"
+                      name="flour"
+                      value={this.state.flour}
+                      onChange={this.onChange}
+                      error={errors.flour}
+                    />
+                  </div>
+                  <div className="col-sm-6">
+                    <InputFieldGroup
+                      placeholder="Flour Amount"
+                      type="number"
+                      name="flouramount"
+                      value={this.state.flouramount}
+                      onChange={this.onChange}
+                      error={errors.flouramount}
+                    />
                   </div>
                 </div>
                 <InputFieldGroup
@@ -220,38 +220,36 @@ export class Recipe extends Component {
                   onChange={this.onChange}
                   error={errors.salt}
                 />
-                <div className="container">
-                  <div className="row">
-                    <div className="col-sm-6">
-                      <div className="form-check">
-                        <input
-                          type="radio"
-                          className="form-check-input"
-                          name="yeast"
-                          value="false"
-                          checked={this.state.yeast === "false"}
-                          onChange={this.onChange}
-                        />
-                        <label className="form-check-label">
-                          Sourdough
-                        </label>
-                      </div>
-                      <div className="form-check">
-                        <input
-                          type="radio"
-                          className="form-check-input"
-                          name="yeast"
-                          value="true"
-                          checked={this.state.yeast === "true"}
-                          onChange={this.onChange}
-                        />
-                        <label className="form-check-label">
-                          Yeast
-                        </label>
-                      </div>
+                <div className="row">
+                  <div className="col-sm-6">
+                    <div className="form-check">
+                      <input
+                        type="radio"
+                        className="form-check-input"
+                        name="yeast"
+                        value="false"
+                        checked={this.state.yeast === "false"}
+                        onChange={this.onChange}
+                      />
+                      <label className="form-check-label">
+                        Sourdough
+                      </label>
                     </div>
+                    <div className="form-check">
+                      <input
+                        type="radio"
+                        className="form-check-input"
+                        name="yeast"
+                        value="true"
+                        checked={this.state.yeast === "true"}
+                        onChange={this.onChange}
+                      />
+                      <label className="form-check-label">
+                        Yeast
+                      </label>
                     </div>
-                    <div className="col-sm-6">
+                  </div>
+                    <div className="col-sm-6 justify-content-end">
                       <InputFieldGroup
                         placeholder="Yeast Amount"
                         type="number"
@@ -261,8 +259,7 @@ export class Recipe extends Component {
                         error={errors.yeastamount}
                       />
                     </div>
-                </div>
-                <div className="container">
+                  </div>
                   <div className="row">
                     <div className="col-sm-6">
                       <InputFieldGroup
@@ -284,7 +281,6 @@ export class Recipe extends Component {
                       />
                     </div>
                   </div>
-                </div>
                 <input type="submit" className="btn btn-lg btn-primary btn-block"/>
               </form>
             </div>
