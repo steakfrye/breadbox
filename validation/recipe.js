@@ -7,7 +7,6 @@ module.exports = function validateRecipeInput(data) {
   data.title = !isEmpty(data.title) ? data.title : '';
   data.flouramount = !isEmpty(data.flouramount) ? data.flouramount : '';
   data.yeastamount = !isEmpty(data.yeastamount) ? data.yeastamount : '';
-  data.yeast = !isEmpty(data.yeast) ? data.yeast : '';
   data.water = !isEmpty(data.water) ? data.water : '';
 
   if (Validator.isEmpty(data.title)) {
@@ -20,10 +19,6 @@ module.exports = function validateRecipeInput(data) {
 
   if (Validator.isEmpty(data.water)) {
     errors.water = 'Water amount is required.';
-  }
-
-  if (Validator.isEmpty(data.yeast)) {
-    errors.yeast = 'Yeast type is required.';
   }
 
   if (Validator.isEmpty(data.yeastamount)) {

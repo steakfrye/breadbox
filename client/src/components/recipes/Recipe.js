@@ -17,7 +17,7 @@ export class Recipe extends Component {
       flouramount: '',
       water: '',
       salt: '',
-      yeast: false,
+      yeast: 'false',
       yeastamount: '',
       addition: '',
       additionamount: '',
@@ -97,8 +97,9 @@ export class Recipe extends Component {
                         <input
                           type="radio"
                           className="form-check-input"
-                          value="grams"
-                          checked={this.state.weighedin === 'Grams'}
+                          name="weighedin"
+                          value="Grams"
+                          checked={this.state.weighedin === "Grams"}
                           onChange={this.onChange}
                         />
                         <label className="form-check-label">
@@ -109,8 +110,9 @@ export class Recipe extends Component {
                         <input
                           type="radio"
                           className="form-check-input"
-                          value="oz"
-                          checked={this.state.weighedin === 'Ounces'}
+                          name="weighedin"
+                          value="Ounces"
+                          checked={this.state.weighedin === "Ounces"}
                           onChange={this.onChange}
                         />
                         <label className="form-check-label">
@@ -121,8 +123,9 @@ export class Recipe extends Component {
                         <input
                           type="radio"
                           className="form-check-input"
-                          value="cups"
-                          checked={this.state.weighedin === 'Cups'}
+                          name="weighedin"
+                          value="Cups"
+                          checked={this.state.weighedin === "Cups"}
                           onChange={this.onChange}
                         />
                         <label className="form-check-label">
@@ -137,8 +140,9 @@ export class Recipe extends Component {
                           <input
                             type="radio"
                             className="form-check-input"
-                            value="fahrenheit"
-                            checked={this.state.temptype === 'Fahrenheit'}
+                            name="temptype"
+                            value="Fahrenheit"
+                            checked={this.state.temptype === "Fahrenheit"}
                             onChange={this.onChange}
                           />
                           <label className="form-check-label">
@@ -149,8 +153,9 @@ export class Recipe extends Component {
                           <input
                             type="radio"
                             className="form-check-input"
-                            value="celsius"
-                            checked={this.state.temptype === 'Celsius'}
+                            name="temptype"
+                            value="Celsius"
+                            checked={this.state.temptype === "Celsius"}
                             onChange={this.onChange}
                           />
                           <label className="form-check-label">
@@ -222,8 +227,9 @@ export class Recipe extends Component {
                         <input
                           type="radio"
                           className="form-check-input"
-                          value="sourdough"
-                          checked={this.state.yeast === false}
+                          name="yeast"
+                          value="false"
+                          checked={this.state.yeast === "false"}
                           onChange={this.onChange}
                         />
                         <label className="form-check-label">
@@ -234,8 +240,9 @@ export class Recipe extends Component {
                         <input
                           type="radio"
                           className="form-check-input"
-                          value="yeast"
-                          checked={this.state.yeast === true}
+                          name="yeast"
+                          value="true"
+                          checked={this.state.yeast === "true"}
                           onChange={this.onChange}
                         />
                         <label className="form-check-label">

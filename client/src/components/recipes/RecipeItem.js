@@ -62,9 +62,14 @@ class RecipeItem extends Component {
               <div className="col">
                 <h4>Water Temperature: {recipe.temperature}° {t}</h4>
                 <h4>Final Dough Temperature: {recipe.fdt}° {t}</h4>
-                <h4>Flour: {recipe.flour} {recipe.weighedin}</h4>
+                <h4>Flour: {recipe.flour} {recipe.flouramount} {recipe.weighedin}</h4>
                 <h4>Water: {recipe.water} {recipe.weighedin}</h4>
                 <h4>Salt: {recipe.salt} {recipe.weighedin}</h4>
+                <h4>Yeast:
+                  {recipe.yeast === false ? "Sourdough" : "Yeast"}
+                  {recipe.yeastamount}
+                  {recipe.weighedin}
+                </h4>
               </div>
             </div>
           </div>
