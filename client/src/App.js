@@ -14,7 +14,7 @@ import Navbar from './components/layout/Navbar';
 import PrivateRoute from './components/common/PrivateRoute';
 import Profile from './components/profile/Profile';
 import Recipe from './components/recipes/Recipe';
-import Recipes from './components/recipes/Recipes';
+import RecipePage from './components/recipes/RecipePage';
 import Register from './components/signin/Register';
 
 import './App.css';
@@ -53,7 +53,7 @@ class App extends Component {
               <Route exact path="/login" component={Login} />
               <Switch>
                 <PrivateRoute exact path="/dashboard" component={Dashboard}/>
-                <PrivateRoute exact path="/recipes" component={Recipes} />
+                <PrivateRoute exact path="/recipes" component={RecipePage} />
                 <PrivateRoute exact path="/newrecipe" component={Recipe} />
                 <PrivateRoute exact path="/profile" component={Profile} />
               </Switch>
