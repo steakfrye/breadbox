@@ -46,7 +46,10 @@
     "validator": "^10.4.0"
   },
   "devDependencies": {
+    "babel-core": "^6.26.3",
+    "babel-jest": "^23.6.0",
     "coveralls": "^3.0.2",
-    "nodemon": "^1.18.7"
+    "nodemon": "^1.18.7",
+    "regenerator-runtime": "^0.13.1"
   }
 }
